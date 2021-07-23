@@ -3,7 +3,7 @@
 // Created on 28. 02. 2013 by Benjamin Walkenhorst
 // (c) 2013 Benjamin Walkenhorst
 // -*- mode: go; -*-
-// Time-stamp: <2019-09-14 19:31:03 krylon>
+// Time-stamp: <2021-07-23 17:21:21 krylon>
 
 package krylib
 
@@ -12,8 +12,10 @@ import (
 	"io"
 	"net/url"
 	"os"
+	"path/filepath"
 	"regexp"
 	"runtime"
+	"strings"
 	"time"
 )
 
@@ -209,3 +211,31 @@ func CopyFile(src, dst string) error {
 
 	return nil
 } // func CopyFile(src, dst string) error
+
+// GetHomeDirectory determines the user's home directory.
+// The reason this is even a thing is that Unix-like systems
+// store this path in the environment variable "HOME",
+// whereas Windows uses the environment variable "USERPROFILE",
+// Hence this function.
+func GetHomeDirectory() string {
+	if runtime.GOOS == "windows" {
+		return os.Getenv("USERPROFILE")
+	}
+
+	return os.Getenv("HOME")
+} // func GetHomeDirectory() string
+
+// ExpandTilde replaces a leading "~" in a path
+// with the current user's home directory.
+func ExpandTilde(path string) string {
+	if !strings.HasPrefix(path, "~") {
+		return path
+	}
+
+	var fullPath = filepath.Join(
+		GetHomeDirectory(),
+		path[1:],
+	)
+
+	return fullPath
+} // func expandTilde(path string) string
