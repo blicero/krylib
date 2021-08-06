@@ -3,7 +3,7 @@
 // Created on 28. 02. 2013 by Benjamin Walkenhorst
 // (c) 2013 Benjamin Walkenhorst
 // -*- mode: go; -*-
-// Time-stamp: <2021-07-23 17:21:21 krylon>
+// Time-stamp: <2021-08-07 01:22:17 krylon>
 
 package krylib
 
@@ -239,3 +239,17 @@ func ExpandTilde(path string) string {
 
 	return fullPath
 } // func expandTilde(path string) string
+
+// IntRange returns a slice of integers in the range of [0,n)
+// If that sounds primitive, that is because it *is* primitive -- languages like
+// Perl or Ruby offer language primitives for this kind of feature.
+// But Go likes to keep it simple, so here we go.
+func IntRange(n int) []int {
+	var r = make([]int, n)
+
+	for i := 0; i < n; i++ {
+		r[i] = i
+	}
+
+	return r
+} // func IntRange(n int) []int
