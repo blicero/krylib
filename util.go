@@ -3,7 +3,7 @@
 // Created on 28. 02. 2013 by Benjamin Walkenhorst
 // (c) 2013 Benjamin Walkenhorst
 // -*- mode: go; -*-
-// Time-stamp: <2021-08-07 01:22:17 krylon>
+// Time-stamp: <2021-08-13 23:37:56 krylon>
 
 package krylib
 
@@ -41,7 +41,7 @@ func FmtBytes(bytes int64) string {
 		amt /= 1024
 	}
 
-	return fmt.Sprintf("%.3f %s", amt, units[idx])
+	return fmt.Sprintf("%.1f %s", amt, units[idx])
 } // func FmtBytes(bytes int64) string
 
 // Fexists cchecks if a file exists.
