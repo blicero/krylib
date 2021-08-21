@@ -3,7 +3,7 @@
 // Created on 28. 02. 2013 by Benjamin Walkenhorst
 // (c) 2013 Benjamin Walkenhorst
 // -*- mode: go; -*-
-// Time-stamp: <2021-08-13 23:37:56 krylon>
+// Time-stamp: <2021-08-21 20:37:17 krylon>
 
 package krylib
 
@@ -149,6 +149,18 @@ func Trace() {
 	file, line := f.FileLine(pc[0])
 	fmt.Printf("%s:%d %s\n", file, line, f.Name())
 } // func Trace()
+
+// TraceInfo returns a string that contains the name of the source file,
+// the line number in the file and the name of the function where TraceInfo
+// is called.
+func TraceInfo() string {
+	pc := make([]uintptr, 10) // at least 1 entry needed
+	runtime.Callers(2, pc)
+	f := runtime.FuncForPC(pc[0])
+	file, line := f.FileLine(pc[0])
+	var s = fmt.Sprintf("%s:%d %s\n", file, line, f.Name())
+	return s
+} // func TraceInfo() string
 
 // StringSlice takes a slice of Stringers (i.e. objects that implement the
 // String() method), creates a slice of strings of the same size as the input,
