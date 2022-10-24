@@ -2,7 +2,10 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 13. 09. 2019 by Benjamin Walkenhorst
 // (c) 2019 Benjamin Walkenhorst
-// Time-stamp: <2020-05-29 20:12:13 krylon>
+// Time-stamp: <2022-09-06 19:10:04 krylon>
+
+// TODO Now that Go has Generics, I might want to rewrite this thing to
+//      carry a generic payload.
 
 package krylib
 
