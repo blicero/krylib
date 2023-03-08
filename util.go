@@ -3,7 +3,7 @@
 // Created on 28. 02. 2013 by Benjamin Walkenhorst
 // (c) 2013 Benjamin Walkenhorst
 // -*- mode: go; -*-
-// Time-stamp: <2021-08-21 20:37:17 krylon>
+// Time-stamp: <2023-03-08 18:37:41 krylon>
 
 package krylib
 
@@ -141,7 +141,8 @@ func ParseURL(s string) *url.URL {
 // I use it happily.
 //
 // PS: I should readlly give this function a do-over so that it returns
-//     the data it obtains, rather than writing it to Stdout.
+//
+//	the data it obtains, rather than writing it to Stdout.
 func Trace() {
 	pc := make([]uintptr, 10) // at least 1 entry needed
 	runtime.Callers(2, pc)
@@ -265,3 +266,24 @@ func IntRange(n int) []int {
 
 	return r
 } // func IntRange(n int) []int
+
+// Number is the sum type of all integer and floating point types that are strictly ordered.
+type Number interface {
+	int | uint | int8 | uint8 | int16 | uint16 | int32 | uint32 | int64 | uint64 | float32 | float64
+}
+
+// Min returns the smaller of two values.
+func Min[T Number](x, y T) T {
+	if x < y {
+		return x
+	} else {
+		return y
+	}
+}
+
+var whitespacePat = regexp.MustCompile("[[:space:]]+")
+
+// SplitOnWhitespace splits a string on whitespace and returns a slice of the resulting substrings.
+func SplitOnWhitespace(s string) []string {
+	return whitespacePat.Split(s, -1)
+} // func SplitOnWhitespace(s string) []string
