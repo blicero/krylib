@@ -1,3 +1,3 @@
-module github.com/blicero/krylib v0.2.0
+module github.com/blicero/krylib
 
 go 1.18
