@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 02. 07. 2016 by Benjamin Walkenhorst
 // (c) 2016 Benjamin Walkenhorst
-// Time-stamp: <2019-09-13 22:00:24 krylon>
+// Time-stamp: <2026-10-30 11:00:04 krylon>
 
 package krylib
 
@@ -28,6 +28,9 @@ func TestCreateMessageBuffer(t *testing.T) {
 } // func TestCreateMessageBuffer(t *testing.T)
 
 func TestAddMessages(t *testing.T) {
+	if buffer == nil {
+		t.SkipNow()
+	}
 	for i := 0; i < TestCnt; i++ {
 		m := fmt.Sprintf("Test Message #%d/%d", i, TestCnt)
 		buffer.AddMessage(m)
@@ -49,6 +52,10 @@ func TestAddMessages(t *testing.T) {
 } // func TestAddMessages(t *testing.T)
 
 func TestGetMessages(t *testing.T) {
+	if buffer == nil {
+		t.SkipNow()
+	}
+
 	var msg *Message
 
 	go func() {

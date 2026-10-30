@@ -3,7 +3,7 @@
 // Created on 28. 02. 2013 by Benjamin Walkenhorst
 // (c) 2013 Benjamin Walkenhorst
 // -*- mode: go; -*-
-// Time-stamp: <2023-09-05 19:11:50 krylon>
+// Time-stamp: <2026-10-30 10:58:51 krylon>
 
 package krylib
 
@@ -276,18 +276,18 @@ type Number interface {
 func Min[T Number](x, y T) T {
 	if x < y {
 		return x
-	} else {
-		return y
 	}
+
+	return y
 } // func Min[T Number](x, y T) T
 
 // Max returns the greater of two values
 func Max[T Number](x, y T) T {
 	if x > y {
 		return x
-	} else {
-		return y
 	}
+
+	return y
 } // func Max[T Number](x, y T) T
 
 var whitespacePat = regexp.MustCompile("[[:space:]]+")

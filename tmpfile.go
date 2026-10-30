@@ -1,5 +1,5 @@
 // -*- mode: go; coding: utf-8; -*-
-//  Time-stamp: <2020-06-01 00:59:27 krylon>
+//  Time-stamp: <2026-10-30 10:58:53 krylon>
 // /home/krylon/go/src/krylib/tmpfile.go
 
 // Created on 31. 05. 2020 by Benjamin Walkenhorst
@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-// RandommFilename generates filename that is randomized
+// RandomFilename generates filename that is randomized
 // file name that should be random  enough to avoid collisions.
 //
 // CAVEAT: The randomness in these filenames is intended to avoid

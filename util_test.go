@@ -2,7 +2,7 @@
 // -*- coding: utf-8; mode: go; -*-
 // Created on 22. 08. 2015 by Benjamin Walkenhorst
 // (c) 2015 Benjamin Walkenhorst
-// Time-stamp: <2019-09-13 22:15:16 krylon>
+// Time-stamp: <2026-10-30 10:57:53 krylon>
 
 package krylib
 
@@ -42,7 +42,7 @@ func parserDummy(s string) (u *url.URL, e error) {
 		}
 	}()
 
-	var addr *url.URL = ParseURL(s)
+	var addr = ParseURL(s)
 	return addr, nil
 } // func parser_dummy(s string) (u *url.URL, e error)
 
