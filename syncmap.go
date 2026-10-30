@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 30. 10. 2026 by Benjamin Walkenhorst
 // (c) 2026 Benjamin Walkenhorst
-// Time-stamp: <2026-10-30 10:57:26 krylon>
+// Time-stamp: <2026-10-30 11:11:23 krylon>
 
 package krylib
 
@@ -54,3 +54,17 @@ func (sm *SyncMap[K, V]) Put(key K, val V) {
 	sm.dict[key] = val
 	sm.lock.Unlock()
 } // func (sm *SyncMap[K, V]) Put(key K, val V)
+
+// Map creates a shallow copy of the underlying map and returns it.
+func (sm *SyncMap[K, V]) Map() map[K]V {
+	var dict = make(map[K]V)
+	sm.lock.RLock()
+
+	for k, v := range sm.dict {
+		dict[k] = v
+	}
+
+	sm.lock.RUnlock()
+
+	return dict
+} // func (sm *SyncMap[K, V])Map() map[K]V
